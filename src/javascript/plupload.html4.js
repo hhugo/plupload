@@ -14,7 +14,7 @@
 
 (function(window, document, plupload, undef) {
 	function getById(id) {
-		return document.getElementById(id);
+		return getElementByIdOpt(id);
 	}
 
 	/**
@@ -385,7 +385,7 @@
 				});
 				
 				uploader.bind("DisableBrowse", function(up, disabled) {
-					var input = document.getElementById('input_' + currentFileId);
+					var input = getElementByIdOpt('input_' + currentFileId);
 					if (input) {
 						input.disabled = disabled;	
 					}

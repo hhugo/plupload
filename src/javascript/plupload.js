@@ -12,6 +12,14 @@
 /*global window:false, escape:false */
 
 /*!@@version@@*/
+var toType = function (obj) {
+    return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
+}
+
+var getElementByIdOpt = function (e) {
+    if(toType(e) == "string") return document.getElementById(e)
+    return e
+}
 
 (function() {
 	var count = 0, runtimes = [], i18n = {}, mimes = {},

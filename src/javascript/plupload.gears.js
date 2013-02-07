@@ -203,7 +203,7 @@
 
 			// Add drop handler
 			uploader.bind("PostInit", function() {
-				var settings = uploader.settings, dropElm = document.getElementById(settings.drop_element);
+				var settings = uploader.settings, dropElm = getElementByIdOpt(settings.drop_element);
 
 				if (dropElm) {
 					// Block browser default drag over
@@ -228,7 +228,7 @@
 				}
 
 				// Add browse button
-				plupload.addEvent(document.getElementById(settings.browse_button), 'click', function(e) {
+				plupload.addEvent(getElementByIdOpt(settings.browse_button), 'click', function(e) {
 					var filters = [], i, a, ext;
 
 					e.preventDefault();
@@ -432,7 +432,7 @@
 				
 				// Unbind event handlers
 				for (name in elements) {
-					element = document.getElementById(elements[name]);
+					element = getElementByIdOpt(elements[name]);
 					if (element) {
 						plupload.removeAllEvents(element, up.id);
 					}

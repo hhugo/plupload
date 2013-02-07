@@ -68,12 +68,12 @@
 			// Setup event listeners if browserplus was initialized
 			function setup() {
 				var disabled = false;
-				
+
 				// Add drop handler
 				uploader.bind("PostInit", function() {
 					var dropTargetElm, dropElmId = settings.drop_element,
 						dropTargetId = uploader.id + '_droptarget',
-						dropElm = document.getElementById(dropElmId),
+						dropElm = getElementByIdOpt(dropElmId),
 						lastState;
 
 					// Enable/disable drop support for the drop target
@@ -102,7 +102,7 @@
 					}
 
 					function hide() {
-						document.getElementById(dropTargetId).style.top = '-1000px';
+						getElementByIdOpt(dropTargetId).style.top = '-1000px';
 					}
 
 					if (dropElm) {
@@ -125,10 +125,10 @@
 							plupload.addEvent(dropElm, 'dragenter', function(e) {
 								var dropElm, dropElmPos;
 
-								dropElm = document.getElementById(dropElmId);
+								dropElm = getElementByIdOpt(dropElmId);
 								dropElmPos = plupload.getPos(dropElm);
 
-								plupload.extend(document.getElementById(dropTargetId).style, {
+								plupload.extend(getElementByIdOpt(dropTargetId).style, {
 									top : dropElmPos.y + 'px',
 									left : dropElmPos.x + 'px',
 									width : dropElm.offsetWidth + 'px',
@@ -142,7 +142,7 @@
 						}
 					}
 
-					plupload.addEvent(document.getElementById(settings.browse_button), 'click', function(e) {
+					plupload.addEvent(getElementByIdOpt(settings.browse_button), 'click', function(e) {
 						var mimes = [], i, a, filters = settings.filters, ext, type;
 
 						e.preventDefault();
